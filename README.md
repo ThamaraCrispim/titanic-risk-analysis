@@ -1,201 +1,58 @@
-# Titanic Risk Analysis
+# Análise Exploratória e Modelagem Preditiva — Titanic
 
-Status: Em Desenvolvimento
+## Objetivo
 
-## Sobre o Projeto
+Este projeto tem como objetivo realizar uma análise exploratória dos dados do Titanic e, posteriormente, construir um modelo preditivo para identificar os fatores que influenciaram a sobrevivência dos passageiros.
 
-Este projeto tem como objetivo analisar os fatores associados à sobrevivência dos passageiros do Titanic utilizando técnicas de Ciência de Dados, Estatística e Modelagem Preditiva.
+## Contexto
 
-O desenvolvimento segue a metodologia CRISP-DM (Cross Industry Standard Process for Data Mining), permitindo documentar todas as etapas do projeto, desde o entendimento do problema até a avaliação dos resultados.
+O desastre do Titanic é um dos casos mais conhecidos em ciência de dados e aprendizado de máquina. A base contém informações sobre os passageiros, como sexo, classe, idade, tarifa paga e porto de embarque, permitindo investigar padrões relacionados à sobrevivência.
 
----
+## Base de dados
 
-# 1. Business Understanding
+A base utilizada foi a base de treinamento do Titanic, disponível em competições e repositórios públicos de ciência de dados.
 
-## Objetivo do Negócio
+## Ferramentas utilizadas
 
-Identificar quais características dos passageiros estiveram associadas à sobrevivência no desastre do Titanic.
+- R
+- data.table
+- ggplot2
+- dplyr
+- lubridate
+- plotly
 
-## Perguntas de Negócio
+## Etapas do projeto
 
-* O sexo influenciou a sobrevivência?
-* Passageiros de classes mais altas tiveram vantagem?
-* A idade impactou as chances de sobrevivência?
-* Viajar sozinho afetou a sobrevivência?
-* O valor da tarifa esteve relacionado à sobrevivência?
+1. Carregamento e inspeção inicial da base
+2. Diagnóstico de valores ausentes
+3. Tratamento dos dados
+4. Análise descritiva
+5. Frequência das variáveis categóricas
+6. Análise cruzada com a variável `Survived`
+7. Construção de gráficos
+8. Modelagem preditiva
+9. Avaliação dos resultados
 
-## Objetivo Analítico
+## Principais achados preliminares
 
-Compreender os fatores associados à sobrevivência e construir um modelo capaz de estimar a probabilidade de sobrevivência dos passageiros.
+- A maioria dos passageiros era do sexo masculino
+- A maior parte dos passageiros estava na 3ª classe
+- A variável `Fare` apresentou forte assimetria, com valores altos puxando a média para cima
+- A taxa de sobrevivência foi de aproximadamente 38,38%
+- Mulheres apresentaram taxa de sobrevivência muito superior à dos homens
+- Passageiros da 1ª classe tiveram melhores chances de sobrevivência
 
----
-
-# 2. Data Understanding
-
-## Fonte dos Dados
-
-Titanic Dataset, base pública disponibilizada pela plataforma Kaggle.
-
-## Variáveis Principais
-
-| Variável | Descrição                         |
-| -------- | --------------------------------- |
-| Survived | Indicador de sobrevivência        |
-| Pclass   | Classe do passageiro              |
-| Sex      | Sexo                              |
-| Age      | Idade                             |
-| SibSp    | Número de irmãos/cônjuges a bordo |
-| Parch    | Número de pais/filhos a bordo     |
-| Fare     | Valor da passagem                 |
-| Embarked | Porto de embarque                 |
-
-## Diagnóstico Inicial
-
-Durante a análise inicial foram identificados valores ausentes em algumas variáveis.
-
-| Variável | Percentual de Missing |
-| -------- | --------------------- |
-| Age      | 19,24%                |
-| Cabin    | 77,53%                |
-| Embarked | 0,28%                 |
-
----
-
-# 3. Data Preparation
-
-## Tratamento dos Dados
-
-As etapas de preparação dos dados incluem:
-
-* Tratamento de valores ausentes;
-* Conversão de tipos de variáveis;
-* Padronização de categorias;
-* Análise de inconsistências;
-* Preparação da base para análise exploratória e modelagem.
-
-## Feature Engineering
-
-Serão criadas novas variáveis para enriquecer a análise e melhorar a interpretação dos fatores associados à sobrevivência.
-
-Variáveis planejadas:
-
-* Faixa etária;
-* Tamanho da família;
-* Passageiro sozinho;
-* Classe social.
-
----
-
-# 4. Modeling
-
-## Variável Target
-
-A variável target do projeto é `Survived`.
-
-| Valor | Significado    |
-| ----- | -------------- |
-| 0     | Não sobreviveu |
-| 1     | Sobreviveu     |
-
-## Modelos Planejados
-
-Inicialmente, será utilizado um modelo de Regressão Logística, por ser adequado para problemas de classificação binária e permitir interpretação estatística dos fatores associados ao evento de interesse.
-
-Também poderão ser testados outros modelos de classificação para comparação de desempenho.
-
----
-
-# 5. Evaluation
-
-As métricas serão calculadas após o treinamento dos modelos.
-
-## Métricas Planejadas
-
-* Accuracy;
-* ROC Curve;
-* AUC;
-* GINI;
-* KS.
-
-## Objetivo da Avaliação
-
-Avaliar a capacidade do modelo em distinguir passageiros sobreviventes e não sobreviventes, além de analisar quais variáveis contribuem mais para a predição.
-
----
-
-# 6. Deployment
-
-A base tratada, os resultados e as métricas serão exportados para utilização em análises futuras, relatórios e possíveis dashboards.
-
-Nesta etapa, o objetivo não é criar uma aplicação em produção, mas sim organizar os entregáveis do projeto de forma reprodutível e clara.
-
----
-
-# Resultados
-
-Esta seção será atualizada conforme o desenvolvimento do projeto.
-
-Serão apresentados:
-
-* Principais insights encontrados;
-* Comparação entre variáveis;
-* Desempenho dos modelos;
-* Interpretação dos resultados;
-* Conclusões da análise.
-
----
-
-# Tecnologias Utilizadas
-
-* R;
-* data.table;
-* ggplot2;
-* Git;
-* GitHub.
-
----
-
-# Estrutura do Projeto
+## Estrutura do repositório
 
 ```text
-titanic-risk-analysis/
-│
+titanic-project/
+├── README.md
 ├── data/
-│
 ├── scripts/
-│   ├── 01_importacao.R
-│   ├── 02_eda.R
-│   ├── 03_tratamento.R
-│   ├── 04_feature_engineering.R
-│   ├── 05_modelagem.R
-│   └── 06_avaliacao.R
-│
 ├── outputs/
-│
-└── README.md
+└── .gitignore
 ```
 
----
+## Conclusão
 
-# Próximos Passos
-
-* Finalizar a análise exploratória;
-* Implementar as etapas de tratamento;
-* Criar variáveis derivadas;
-* Treinar o modelo de Regressão Logística;
-* Avaliar o desempenho utilizando AUC, GINI e KS;
-* Desenvolver visualizações;
-* Atualizar a seção de resultados com os principais insights;
-* Criar uma versão equivalente em Python.
-
----
-
-# Autora
-
-Thamara Gabriella Crispim Bezerra
-
-Graduanda em Estatística — UFSCar
-
-Presidente do PANDA UFSCar
-
-Estagiária em Modelagem e Analytics
+O projeto mostra que variáveis como sexo, classe social e tarifa paga tiveram forte relação com a sobrevivência no Titanic. A próxima etapa será a construção e comparação de modelos preditivos para verificar quais variáveis têm maior poder de explicação.
